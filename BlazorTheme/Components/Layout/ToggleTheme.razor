@@ -6,7 +6,7 @@
 </button>
 
 @code {
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await ThemeService.GetCurrentTheme();
         await ThemeService.ApplyCurrentTheme();
