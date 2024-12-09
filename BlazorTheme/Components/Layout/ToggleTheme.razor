@@ -1,0 +1,20 @@
+﻿@inject ThemeService ThemeService
+
+<button @onclick="ToggleThemeOnClick" class="theme-toggle @ThemeService.CurrentTheme">
+    <span class="theme-icon light">☀️</span>
+    <span class="theme-icon dark">🌙</span>
+</button>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await ThemeService.GetCurrentTheme();
+        await ThemeService.ApplyCurrentTheme();
+    }
+
+    private async Task ToggleThemeOnClick()
+    {
+        await ThemeService.ToggleTheme();
+        await ThemeService.ApplyCurrentTheme();
+    }
+}
